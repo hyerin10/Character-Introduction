@@ -4,11 +4,12 @@
   <meta charset="UTF-8">
   <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
   <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+  <link rel="stylesheet" href="css/character_page.css">
   <title></title>
   <script type="text/javascript">
-        // Create a function to add a form to the page
+        
         function addMemoForm() {
-            // Create a form element
+            
             var form = document.createElement("form");
             
             form.setAttribute("action", "#");
@@ -28,16 +29,42 @@
             document.body.appendChild(form);
         }
 
-        function addCharacterSheet() {
-            // Create a form element
-            var form = document.createElement("form");
-            
-            // DB에서 데이터 불러오기
-            // 메인 화면에 띄워주기
+        function addCharacterSheet(event) {
+          event.preventDefault(); // 기본 동작 방지
 
-            document.body.appendChild(form);
+          // 이미지 경로와 캐릭터 이름을 변수로 지정합니다.
+          const imagePath = "images/sheet_blue.png";
+          const characterName = "캐릭터 이름";
+
+          // li 요소를 생성합니다.
+          const li = document.createElement("li");
+          li.className = "sheet";
+
+          // a 요소를 생성하고 href 속성과 img 요소를 추가합니다.
+          const a = document.createElement("a");
+          a.href = "http://localhost/Character%20Introduction/character_page.php?num=2";
+          const img = document.createElement("img");
+          img.src = imagePath;
+          img.alt = "";
+          a.appendChild(img);
+          li.appendChild(a);
+
+          // div 요소를 생성하고 캐릭터 이름을 추가합니다.
+          const div = document.createElement("div");
+          div.className = "character_name";
+          div.textContent = characterName;
+          li.appendChild(div);
+
+          // 페이지에 li 요소를 추가합니다.
+          const ul = document.querySelector("ul"); // ul 요소를 선택합니다.
+          ul.appendChild(li); // li 요소를 ul 요소의 자식 요소로 추가합니다.
+          
+          // 마지막 li 요소를 마지막에서 두번째로 보냅니다.
+          const lastItem = ul.lastChild.previousElementSibling;
+          ul.insertBefore(li, lastItem);
         }
 
+        
     </script>
 </head>
 <body>
@@ -67,7 +94,9 @@
     $hair = $row["hair"];
     $clothing = $row["clothing"];
     $etc = $row["etc"];
+    
   ?>
+  <button onclick="printCharacterName()">dd</button>
   <div class="container">
       <li class="content_list">
         <span class="content_item">이름: </span>
@@ -94,5 +123,78 @@
   <input type="button" value="캐릭터 시트 추가" onclick="addCharacterSheet()" />
   <input type="button" value="데이터 저장" onclick="addCharacterSheet()" />
   
+  <div class="root">
+    <div class="container_top">
+        <ul class="sheets">
+          <li class="sheet">
+            <a href=""><img src="images/sheet_blue.png" alt=""></a>
+            <div class="character_name"><?=$name?></div>
+          </li>
+          <li class="sheet">
+            <a href="http://localhost/Character%20Introduction/character_page.php?num=2"><img src="images/sheet_blue.png" alt=""></a>
+            <div class="character_name"><?=$name?></div>
+          </li>
+          <li class="sheet">
+            <a href="" onclick="addCharacterSheet(event)"><img src="images/sheet_gray1.png" alt=""></a>
+            <div class="character_name">ADD+</div>
+          </li>
+        </ul>
+
+        <ul class="weather_conditions">
+          <li class="weather_condition">
+            <a href=""><img src="images/rain.png" alt=""></a>
+            <span>Rainy</span>
+          </li>
+          <li class="weather_condition">
+            <a href=""><img src="images/sunny.png" alt=""></a>
+            <span>Sunny</span>
+          </li>
+          <li class="weather_condition">
+            <a href=""><img src="images/snow.png" alt=""></a>
+            <span>Snowy</span>
+          </li>
+        </ul>
+
+        <div class="character_main">
+          <span>Character profile</span>
+          <a href=""><img src="images/boy_blue.png" alt=""></a>
+        </div>
+
+    </div>
+    <div class="container_bottom">
+        <div class="left_btn">
+          <a href=""><img src="images/memo_left.png" alt=""></a>
+        </div>
+
+        <ul class="memos">
+          <li class="memo">
+            <div class="memo_title"></div>
+            <div class="memo_content"></div>
+            <a href=""><img src="images/memo_close.png" alt=""></a>
+          </li>
+          <li class="memo">
+            <div class="memo_title"></div>
+            <div class="memo_content"></div>
+            <a href=""><img src="" alt=""></a>
+          </li>
+          <li class="memo">
+            <div class="memo_title"></div>
+            <div class="memo_content"></div>
+            <a href=""><img src="" alt=""></a>
+          </li>
+          <li class="memo">
+            <div class="memo_title"></div>
+            <div class="memo_content"></div>
+            <a href=""><img src="" alt=""></a>
+          </li>
+        </ul>
+
+        <div class="right_btn">
+          <a href=""><img src="images/memo_right.png" alt=""></a>
+        </div>
+    </div>
+  </div>
+
+
 </body>
 </html>
