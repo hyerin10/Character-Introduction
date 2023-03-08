@@ -1,0 +1,157 @@
+body {
+  font-family: 'Noto Sans', sans-serif;
+  font-weight: 400; /* Regular 400 */
+  color: #7F7F7F;
+}
+
+ul {
+  list-style:none;
+}
+
+a {
+  text-decoration: none;
+}
+.character_content {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}
+
+.character_content > .bin_button {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+}
+
+.character_content > * {
+  margin-bottom: 24px;
+  
+}
+
+.select_img_div {
+  /* width: 100px;
+  height: 100px;
+  background-color: #8faadc;
+  border: 1px solid #2f528f;
+  margin-top: 36px;
+  /* position: relative; */
+  /* position: absolute;
+  top: 0;
+  left: 100px; */
+}
+
+#select_img {
+  width: 100px;
+  height: 100px;
+  background-color: #8faadc;
+  border: 1px solid #2f528f;
+  margin-top: 36px;
+  position: relative;
+}
+
+/* 파일 선택 버튼의 텍스트 감추기 */
+#select_img::-webkit-file-upload-button {
+  opacity: 0;
+}
+
+.select_img > button {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+}
+
+.theme_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.theme_colors {
+  display: flex;
+}
+
+.theme_colors > li{
+  margin-right: 12px;
+}
+
+.theme_colors > li{
+  margin-right: 12px;
+}
+
+.theme_colors > li:first-child {
+  margin-left: -24px;
+}
+
+.radio_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.radio_container > * {
+  margin-right: 12px;
+}
+
+input[type="radio"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0;
+  border: 1px solid black;
+  width: 20px;
+  height: 20px;
+}
+
+input[type="radio"]:checked:before {
+  content: '\2713';
+  display: block;
+  text-align: center;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+
+.input_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.titles {
+  display: flex;
+  flex-direction: column;
+}
+
+.titles > * {
+  margin-right: 4px;
+  margin-bottom: 12px;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+}
+
+.inputs > * {
+  margin-bottom: 12px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  border: 1px solid #2f528f;
+  background: #dae3f3;
+  outline: none;
+  width: 70px;
+  height: 30px;
+  margin-right: 16px;
+}

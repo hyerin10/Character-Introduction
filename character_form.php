@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="css/character_form.css">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans:300,400&display=swap" rel="stylesheet">
   <script>
     function check_input() {
       
@@ -43,7 +45,14 @@
         return;
       }
       document.character_form.submit();
+      window.close();
     }
+
+    function onClickUpload() {
+        let myInput = document.getElementById("select_img");
+        myInput.click();
+    }
+
   </script>
 </head>
 <body>
@@ -51,45 +60,57 @@
   <div class="character_content">
 
     <!-- 파일 선택 창 뜨게하기  -->
-    <a href=""><img src="" alt=""></a>
+    <input type="file" name="character_image" id="select_img" accept="image/*">
 
     <!-- 테마 컬러 선택 / 라디오 이미지 버튼 가능? -->
-    <ul>
-      <li><a href=""><img src="" alt=""></a></li>
-      <li><a href=""><img src="" alt=""></a></li>
-      <li><a href=""><img src="" alt=""></a></li>
-    </ul>
+    <div class="theme_container">
+      <span>Theme Color</span>
+      <ul class="theme_colors">
+        <li><a href=""><img src="images/theme_blue.png" alt=""></a></li>
+        <li><a href=""><img src="images/theme_green.png" alt=""></a></li>
+        <li><a href=""><img src="images/theme_red.png" alt=""></a></li>
+      </ul>
+      
+    </div>
 
-    <!-- 라디오 버튼으로 바꾸기(모양은 체크)-->
-    <input type="radio" name="gender" value="Male">Male
-    <input type="radio" name="gender" value="Female">Female
-
-    <span>name: </span>
-    <input type="text" name="name">
-
-    <span>hair: </span>
-    <input type="text" name="hair">
+    <div class="radio_container">
+      <!-- 라디오 버튼으로 바꾸기(모양은 체크)-->
+      Male<input type="radio" name="gender" value="Male">
+      Female<input type="radio" name="gender" value="Female">
+    </div>
     
-    <span>eyes: </span>
-    <input type="text" name="eyes">
 
-    <span>skin: </span>
-    <input type="text" name="skin">
+    <div class="input_container">
+      <div class="titles">
+        <span>name: </span>
+        <span>hair: </span>
+        <span>eyes: </span>
+        <span>skin: </span>
+        <span>clothing: </span>
+        <span>etc: </span>
+      </div>
+      <div class="inputs">
+        <input type="text" name="name">
+        <input type="text" name="hair">
+        <input type="text" name="eyes">
+        <input type="text" name="skin">
+        <input type="text" name="clothing">
+        <input type="text" name="etc">
+      </div>
+    </div>
+    
+    
+    <div class="buttons">
+      <button type="button" onclick="check_input()">확인</button>
+      <!-- 창 꺼지게 하기 -->
+      <button type="button">취소</button>
 
-    <span>clothing: </span>
-    <input type="text" name="clothing">
-
-    <span>etc: </span>
-    <input type="text" name="etc">
-
-    <button type="button" onclick="check_input()">확인</button>
-
-    <!-- 창 꺼지게 하기 -->
-    <button type="button">취소</button>
+    </div>
 
     <!-- 휴지통 이미지 버튼 만들기(삭제) -->
-    <button type="button" onclick="check_input()">휴지통 이미지 버튼</button>
-    
+    <div class="bin_button">
+      <a href=""><img src="images/bin.png" alt=""></a>
+    </div>
   </div>
   </form>
 </body>

@@ -63,6 +63,8 @@
           // 마지막 li 요소를 마지막에서 두번째로 보냅니다.
           const lastItem = ul.lastChild.previousElementSibling;
           ul.insertBefore(li, lastItem);
+
+          window.open("character_form.php", "Character Form", "width=400,height=650");
         }
 
         function openMemoForm() {
