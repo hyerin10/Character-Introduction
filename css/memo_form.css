@@ -1,4 +1,59 @@
-.memo_container {
+body {
+  font-family: 'Noto Sans', sans-serif;
+  font-weight: 400; /* Regular 400 */
+  color: #7F7F7F;
+
+}
+
+.memo_form {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
 }
+
+.memo_container {
+  display: flex;
+  /* flex-direction: column; */
+}
+
+.titles {
+  display: flex;
+  flex-direction: column;
+  margin-right: 12px;
+  margin-bottom: 12px;
+}
+
+.titles > span {
+  margin-bottom: 12px;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+}
+
+.memo_content_input {
+  height: 150px;
+  margin-top: 12px;
+}
+
+.buttons {
+  display: flex;
+  margin-top: 12px;
+}
+
+.buttons > button{
+  margin-right: 12px;
+}
+
+button {
+  border: 1px solid #2f528f;
+  background: #dae3f3;
+  outline: none;
+  width: 70px;
+  height: 40px;
+}
+

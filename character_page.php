@@ -65,7 +65,9 @@
           ul.insertBefore(li, lastItem);
         }
 
-        
+        function openMemoForm() {
+          window.open("memo_form.php", "Memo Form", "width=500,height=350");
+        }
     </script>
 </head>
 <body>
@@ -120,7 +122,7 @@
 
       </li>
   </div>
-  <input type="button" value="메모 추가" onclick="addMemoForm()" />
+  <input type="button" value="메모 추가" onclick="openMemoForm()" />
   <input type="button" value="캐릭터 시트 추가" onclick="addCharacterSheet()" />
   <input type="button" value="데이터 저장" onclick="addCharacterSheet()" />
   

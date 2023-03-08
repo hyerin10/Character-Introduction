@@ -25,18 +25,25 @@
   </script>
 </head>
 <body>
-  <form action="memo_insert.php" name="memo_form" method="post" enctype="multipart/form-data">
-  <div class="memo_container">
-    <span>Title: <input type="text" name="memo_title"></span>
+  <form action="memo_insert.php" name="memo_form" class="memo_form" method="post" enctype="multipart/form-data">
+    <div class="memo_container">
+      <div class="titles">
+        <span>Title: </span>
+        <span>Content: </span>
+        
+      </div>
+      <div class="inputs">
+        <input type="text" name="memo_title">
+        <input type="text" name="memo_content" class="memo_content_input">
+      </div>
+    </div>
 
-    <span>Content: <input type="text" name="memo_content"></span>
+    <div class="buttons">
+      <button type="button" onclick="check_input()">확인</button>
 
-    <button type="button" onclick="check_input()">확인</button>
-
-    <!-- 창 꺼지게 하기 -->
-    <button type="button">취소</button>
-    
-  </div>
+      <!-- 창 꺼지게 하기 -->
+      <button type="button">취소</button>
+    </div>
   </form>
 </body>
 </html>
