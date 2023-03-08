@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="css/memo_form.css">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans:300,400&display=swap" rel="stylesheet">
   <script>
     function check_input() {
       
@@ -24,13 +26,10 @@
 </head>
 <body>
   <form action="memo_insert.php" name="memo_form" method="post" enctype="multipart/form-data">
-  <div class="memo_content">
-    <span>Title: </span>
-    <input type="text" name="memo_title">
+  <div class="memo_container">
+    <span>Title: <input type="text" name="memo_title"></span>
 
-    <span>Content: </span>
-    <input type="text" name="memo_content">
-
+    <span>Content: <input type="text" name="memo_content"></span>
 
     <button type="button" onclick="check_input()">확인</button>
 

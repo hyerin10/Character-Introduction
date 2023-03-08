@@ -5,6 +5,7 @@
   <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
   <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
   <link rel="stylesheet" href="css/character_page.css">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans:300,400&display=swap" rel="stylesheet">
   <title></title>
   <script type="text/javascript">
         
@@ -139,7 +140,7 @@
             <div class="character_name">ADD+</div>
           </li>
         </ul>
-
+        
         <ul class="weather_conditions">
           <li class="weather_condition">
             <a href=""><img src="images/rain.png" alt=""></a>
@@ -157,7 +158,10 @@
 
         <div class="character_main">
           <span>Character profile</span>
-          <a href=""><img src="images/boy_blue.png" alt=""></a>
+          <div class="character_main_line">
+            <a href=""><img src="images/boy_blue.png" alt=""></a>
+          </div>
+          
         </div>
 
     </div>
@@ -168,22 +172,29 @@
 
         <ul class="memos">
           <li class="memo">
-            <div class="memo_title"></div>
+            <div class="memo_title">
+              <a href=""><img src="images/memo_close.png" alt="" class="memo_close"></a>
+            </div>
             <div class="memo_content"></div>
-            <a href=""><img src="images/memo_close.png" alt=""></a>
+            
           </li>
           <li class="memo">
-            <div class="memo_title"></div>
+            <div class="memo_title">
+              <a href=""><img src="images/memo_close.png" alt="" class="memo_close"></a>
+            </div>
+            <div class="memo_content"></div>
+          </li>
+          <li class="memo">
+            <div class="memo_title">
+              <a href=""><img src="images/memo_close.png" alt="" class="memo_close"></a>
+            </div>
             <div class="memo_content"></div>
             <a href=""><img src="" alt=""></a>
           </li>
           <li class="memo">
-            <div class="memo_title"></div>
-            <div class="memo_content"></div>
-            <a href=""><img src="" alt=""></a>
-          </li>
-          <li class="memo">
-            <div class="memo_title"></div>
+            <div class="memo_title">
+              <a href=""><img src="images/memo_close.png" alt="" class="memo_close"></a>
+            </div>
             <div class="memo_content"></div>
             <a href=""><img src="" alt=""></a>
           </li>

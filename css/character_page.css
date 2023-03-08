@@ -1,3 +1,8 @@
+body {
+  font-family: 'Noto Sans', sans-serif;
+  font-weight: 400; /* Regular 400 */
+}
+
 .root {
   display: flex;
   flex-direction: column;
@@ -26,13 +31,15 @@ a {
 
   width: 100%;
   height: 300px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 
   align-items: center;
 }
 
 .sheets {
   display: flex;
+  border-bottom: 2px solid #B1B8ED;
+  margin-bottom: -2px;
 }
 
 .sheet {
@@ -75,6 +82,15 @@ a {
   align-items: center;
 }
 
+.character_main_line {
+  width: 350px;
+  height: 360px;
+  border: 2px solid #B1B8ED;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .character_main > * {
   margin-bottom: 12px;
 }
@@ -83,14 +99,14 @@ a {
   display: flex;
 
   width: 100%;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   justify-content: space-evenly;
 }
 
 .memo {
   width: 250px;
   height: 250px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 
 .memo:first-of-type {
@@ -100,7 +116,13 @@ a {
 .memo_title {
   height: 40px;
   background-color: #B1B8ED;
-  /* border: 1px solid blue; */
+  position: relative;
+}
+
+.memo_close {
+  position: absolute;
+  top: 5px;
+  right: 5px;
 }
 
 .memo_content {
