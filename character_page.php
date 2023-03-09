@@ -10,7 +10,10 @@
   <script type="text/javascript">
         
         function memoDelete(chracter_num, memo_num) {
-          document.memo_delete.submit();
+          var form = document.memo_delete;
+          form.character_num.value = character_num;
+          form.memo_num.value = memo_num;
+          form.submit();
           alert('삭제되었습니다.');
         }
 
@@ -78,73 +81,50 @@
     </script>
 </head>
 <body>
-  <?php
-    $num = $_GET["num"];
-    // $con = mysqli_connect("localhost", "user1", "12345", "sample");
-    // $sql = "insert into character_information(name, gender, theme_color, character_image_url, eyes, skin, hair, clothing, etc) ";
-    // $sql .= "values('wo', 'male', 'blue', 'https://drive.google.com/file/d/1d4n6J61GxRa0YthN1UI-nlLZAQJA8fJ6/view?usp=share_link', 'black', 'brwon', 'plain', 'test clothing', 'none')";
-
-    // mysqli_query($con, $sql);
-    // mysqli_close($con);
-
-    // 데이터 가져오기
-    $con = mysqli_connect("localhost", "user1", "12345", "sample");
-    $sql = "select * from character_information where num=$num";
-
-    $result = mysqli_query($con, $sql);
-
-    $row = mysqli_fetch_array($result);
-
-    $character_num = $row["num"];
-    $name = $row["name"];
-    $gender = $row["gender"];
-    $theme_color = $row["theme_color"];
-    $character_image_url = $row["character_image_url"];
-    $eyes = $row["eyes"];
-    $skin = $row["skin"];
-    $hair = $row["hair"];
-    $clothing = $row["clothing"];
-    $etc = $row["etc"];
-    
-  ?>
-  <button onclick="printCharacterName()">dd</button>
+  
   <div class="container">
-      <li class="content_list">
-        <span class="content_item">이름: </span>
-        <span class="content_item"><?=$name?></span>
-        <span class="content_item">gender: </span>
-        <span class="content_item"><?=$gender?></span>
-        <span class="content_item">theme_color: </span>
-        <span class="content_item"><?=$theme_color?></span>
-        <span class="content_item"><img src='$character_image_url' alt=""></span>
-        <span class="content_item">eyes: </span>
-        <span class="content_item"><?=$eyes?></span>
-        <span class="content_item">skin: </span>
-        <span class="content_item"><?=$skin?></span>
-        <span class="content_item">hair: </span>
-        <span class="content_item"><?=$hair?></span>
-        <span class="content_item">clothing: </span>
-        <span class="content_item"><?=$clothing?></span>
-        <span class="content_item">etc: </span>
-        <span class="content_item"><?=$etc?></span>
-
-      </li>
+      
   </div>
-  <input type="button" value="메모 추가" onclick="openMemoForm()" />
-  <input type="button" value="캐릭터 시트 추가" onclick="addCharacterSheet()" />
-  <input type="button" value="데이터 저장" onclick="addCharacterSheet()" />
   
   <div class="root">
     <div class="container_top">
         <ul class="sheets">
+  <?php
+    $num = $_GET["num"];
+
+    // 모든 데이터 가져오기 구현
+
+    // 데이터 가져오기
+    $con = mysqli_connect("localhost", "user1", "12345", "sample");
+    $sql = "select * from character_information";
+
+    $result = mysqli_query($con, $sql);
+    $total_record = mysqli_num_rows($result);
+    for($i=0; $i<$total_record;$i++) {
+      mysqli_data_seek($result, $i);
+      $row = mysqli_fetch_array($result);
+
+      $character_num = $row["num"];
+      $name = $row["name"];
+      $gender = $row["gender"];
+      $theme_color = $row["theme_color"];
+      $character_image_url = $row["character_image_url"];
+      $eyes = $row["eyes"];
+      $skin = $row["skin"];
+      $hair = $row["hair"];
+      $clothing = $row["clothing"];
+      $etc = $row["etc"];
+    
+  ?>
           <li class="sheet">
             <a href=""><img src="images/sheet_blue.png" alt=""></a>
             <div class="character_name"><?=$name?></div>
           </li>
-          <li class="sheet">
-            <a href="http://localhost/Character%20Introduction/character_page.php?num=2"><img src="images/sheet_blue.png" alt=""></a>
-            <div class="character_name"><?=$name?></div>
-          </li>
+  <?php
+
+    }
+    mysqli_close($con);
+  ?>
           <li class="sheet">
             <a href="" onclick="addCharacterSheet(event)"><img src="images/sheet_gray1.png" alt=""></a>
             <div class="character_name">ADD+</div>
@@ -175,49 +155,62 @@
         </div>
 
     </div>
-    <div class="container_bottom">
-        <div class="left_btn">
-          <a href=""><img src="images/memo_left.png" alt=""></a>
-        </div>
+  
+    <form action="memo_delete.php" name="memo_delete" method="post" enctype="multipart/form-data">
+      <div class="container_bottom">
+          <div class="left_btn">
+            <a href=""><img src="images/memo_left.png" alt=""></a>
+          </div>
 
-        <form action="memo_delete.php" name="memo_delete" method="post" enctype="multipart/form-data">
-          <ul class="memos">
-            <li class="memo">
-              
-                <div class="memo_title">
-                  <a href=""><img src="images/memo_close.png" onclick="memoDelete(<?=$character_num?>, 1)" alt="" class="memo_close"></a>
-                </div>
-                <a href="" onclick="openMemoForm(<?=$character_num?>)">
-                  <div class="memo_content"></div>
-                </a>
-            </li>
-            <li class="memo">
-              <div class="memo_title">
-                <a href=""><img src="images/memo_close.png" alt="" class="memo_close"></a>
-              </div>
-              <div class="memo_content"></div>
-            </li>
-            <li class="memo">
-              <div class="memo_title">
-                <a href=""><img src="images/memo_close.png" alt="" class="memo_close"></a>
-              </div>
-              <div class="memo_content"></div>
-              <a href=""><img src="" alt=""></a>
-            </li>
-            <li class="memo">
-              <div class="memo_title">
-                <a href=""><img src="images/memo_close.png" alt="" class="memo_close"></a>
-              </div>
-              <div class="memo_content"></div>
-              <a href=""><img src="" alt=""></a>
-            </li>
-          </ul>
-        </form>
+            <ul class="memos">
+    <?php
+      $num = $_GET["num"];
 
-        <div class="right_btn">
-          <a href=""><img src="images/memo_right.png" alt=""></a>
-        </div>
-    </div>
+      // 모든 데이터 가져오기 구현
+      $con = mysqli_connect("localhost", "user1", "12345", "sample");
+      $sql = "select * from memo where character_num=$num";
+
+      $result = mysqli_query($con, $sql);
+      $total_record = mysqli_num_rows($result);
+
+      // 총 데이터가 1개, 2개, 3개, 4개, 4개 이상인 경우
+      
+      for($i=0; $i<$total_record;$i++) {
+        mysqli_data_seek($result, $i);
+        $row = mysqli_fetch_array($result);
+
+        $memo_title = $row["memo_title"];
+        $memo_content = $row["memo_content"];
+
+
+    ?>
+              <li class="memo">
+                  <div class="memo_title">
+                    <?=$memo_title?>
+                    <a href="memo_delete.php?character_num=<?=$character_num?>&memo_num=2"><img src="images/memo_close.png" onclick="memoDelete(<?=$character_num?>, 1)" alt="" class="memo_close"></a>
+                  </div>
+
+                  <a href="" onclick="openMemoForm(<?=$character_num?>)">
+
+                  <div class="memo_content">
+                    <?=$memo_content?>
+                    </div>
+                  </a>
+              </li>
+    <?php
+
+      }
+      mysqli_close($con);
+    ?>    
+            </ul>
+          
+
+          <div class="right_btn">
+            <a href=""><img src="images/memo_right.png" alt=""></a>
+          </div>
+          
+      </div>
+    </form>
   </div>
 
 

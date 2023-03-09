@@ -30,8 +30,10 @@
   mysqli_query($con, $sql);
   mysqli_close($con);
   echo "insert 4";
+  
   echo "
     <script>
+      window.opener.location.reload(); // 부모창을 새로고침합니다.
       location.href = 'character_form.php';
     </script>
   ";
