@@ -8,29 +8,32 @@
   <script>
     function check_input() {
       
-      if(!document.memo_form.memo_title.value)
+      if(!document.memo_update_form.memo_title.value)
       {
         alert('메모 제목을 입력하세요.');
-        document.memo_form.memo_title.focus();
+        document.memo_update_form.memo_title.focus();
         return;
       }
-      if(!document.memo_form.memo_content.value)
+      if(!document.memo_update_form.memo_content.value)
       {
         alert('메모 내용을 입력하세요.');
-        document.memo_form.memo_content.focus();
+        document.memo_update_form.memo_content.focus();
         return;
       }
-      document.memo_form.submit();
-      alert('메모가 저장되었습니다.');
+      document.memo_update_form.submit();
+      alert('메모가 수정되었습니다.');
     }
+
     
   </script>
 </head>
 <body>
-  <form action="memo_insert.php" name="memo_form" class="memo_form" method="post" enctype="multipart/form-data">
+  <form action="memo_update.php" name="memo_update_form" class="memo_form" method="post" enctype="multipart/form-data">
 
     <div class="memo_container">
+    <input type="hidden" name="memo_num" value="<?php echo $_GET['memo_num']; ?>">
     <input type="hidden" name="character_num" value="<?php echo $_GET['character_num']; ?>">
+    
       <div class="titles">
         <span>Title: </span>
         <span>Content: </span>

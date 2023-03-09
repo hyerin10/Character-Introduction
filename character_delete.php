@@ -11,7 +11,7 @@
     $character_num = $_GET["character_num"];
 
     $con = mysqli_connect("localhost", "user1", "12345", "sample");
-    $sql = "delete from character_information where num='$num'";
+    $sql = "delete from character_information where num='$character_num'";
     mysqli_query($con, $sql);
     mysqli_close($con);
     

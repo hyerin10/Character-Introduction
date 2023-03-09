@@ -119,8 +119,13 @@ a {
   height: 40px;
   background-color: #B1B8ED;
   position: relative;
+  display: flex;
+  align-items: center;
 }
-
+.memo_title > span {
+  margin-left: 12px;
+  font-weight: 900;
+}
 .memo_close {
   position: absolute;
   top: 5px;
@@ -131,4 +136,43 @@ a {
   height: 208px;
   background-color: #dce3fc;
   /* border: 1px solid red; */
+  display: flex;
+  
 }
+
+.memo_content > span {
+  margin-left: 12px;
+  margin-top: 4px;
+}
+
+.memo_empty {
+  width: 250px;
+  height: 250px;
+  /* border: 1px solid black; */
+}
+
+/* .memo_empty:first-of-type {
+  margin-left:-32px;
+} */
+
+.memo_title_empty {
+  height: 40px;
+  background-color: #d9d9d9;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.memo_title_empty > span {
+  margin-left: 12px;
+  font-weight: 900;
+}
+
+.memo_content_empty {
+  height: 208px;
+  background-color: #f2f2f2;
+  /* border: 1px solid red; */
+  display: flex;
+  
+}
+

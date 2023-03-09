@@ -78,6 +78,10 @@
         function openMemoForm(character_num) {
           window.open("memo_form.php?character_num="+character_num, "Memo Form", "width=500,height=350");
         }
+
+        function openMemoFormForUpdate(memo_num, character_num) {
+          window.open("memo_update_form.php?memo_num="+memo_num+"&character_num="+character_num, "Memo Update Form", "width=500,height=350");
+        }
     </script>
 </head>
 <body>
@@ -117,7 +121,7 @@
     
   ?>
           <li class="sheet">
-            <a href=""><img src="images/sheet_blue.png" alt=""></a>
+            <a href="character_page.php?num=<?=$character_num?>"><img src="images/sheet_blue.png" alt=""></a>
             <div class="character_name"><?=$name?></div>
           </li>
   <?php
@@ -174,11 +178,15 @@
       $total_record = mysqli_num_rows($result);
 
       // 총 데이터가 1개, 2개, 3개, 4개, 4개 이상인 경우
+
+      // 현재 선택되어 있는 페이지의 num가져오기
+      // $character_num = isset($_GET['num']) ? $_GET['num'] : null;
       
       for($i=0; $i<$total_record;$i++) {
         mysqli_data_seek($result, $i);
         $row = mysqli_fetch_array($result);
 
+        $memo_num = $row["memo_num"];
         $memo_title = $row["memo_title"];
         $memo_content = $row["memo_content"];
 
@@ -186,22 +194,45 @@
     ?>
               <li class="memo">
                   <div class="memo_title">
-                    <?=$memo_title?>
-                    <a href="memo_delete.php?character_num=<?=$character_num?>&memo_num=2"><img src="images/memo_close.png" onclick="memoDelete(<?=$character_num?>, 1)" alt="" class="memo_close"></a>
+                    <span class="memo_title_letter"><?=$memo_title?><?=$memo_num?></span>
+                    <a href="memo_delete.php?character_num=<?=isset($_GET['num']) ? $_GET['num'] : null?>&memo_num=<?=$memo_num?>"><img src="images/memo_close.png" onclick="memoDelete(<?=$character_num?>, 1)" alt="" class="memo_close"></a>
                   </div>
-
-                  <a href="" onclick="openMemoForm(<?=$character_num?>)">
-
-                  <div class="memo_content">
-                    <?=$memo_content?>
+                  <!-- 메모수정 -->
+                  <!-- <h1><?=isset($_GET['num']) ? $_GET['num'] : null?></h1> -->
+                  <a href="" onclick="openMemoFormForUpdate(<?=$memo_num?>, <?=isset($_GET['num']) ? $_GET['num'] : null?>);">
+                    <div class="memo_content">
+                      <span class="memo_content_letter"><?=$memo_content?></span>
                     </div>
                   </a>
               </li>
     <?php
-
+        $character_num++;
       }
       mysqli_close($con);
-    ?>    
+
+      if($total_record<=4) {
+        
+        for($i=0;$i<4-$total_record;$i++) {
+    ?>
+    <!-- <h1>hhhh</h1> -->
+              <li class="memo_empty">
+                  <div class="memo_title_empty">
+                    <span class="memo_title_empty_letter">메모추가</span>
+                    <a href=""><img src="images/memo_close.png" onclick="" alt="" class="memo_close"></a>
+                  </div>
+
+                  <a href="" onclick="openMemoForm(<?=isset($_GET['num']) ? $_GET['num'] : null?>)">
+
+                  <div class="memo_content_empty">
+                    </div>
+                  </a>
+              </li>
+    <?php
+          $character_num++;
+        }
+
+      }
+    ?>
             </ul>
           
 
