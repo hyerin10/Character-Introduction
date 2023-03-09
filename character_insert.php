@@ -16,18 +16,23 @@
   $skin = $_POST["skin"];
   $hair = $_POST["hair"];
   $etc = $_POST["etc"];
-  $weather_conditions = $_POST["weather_conditions"];
+  // $weather_conditions = $_POST["weather_conditions"];
   
+  echo "insert 1";
+
   $con = mysqli_connect("localhost", "user1", "12345", "sample");
-  $sql = "insert into character_information(name, gender, theme_color, character_image_url, eyes, skin, hair, clothing, etc, weather_conditions) ";
-  $sql .= "values('$name', '$gender', '$theme_color', '$character_image_url', '$eyes', '$skin', '$hair', '$clothing', '$etc', '$weather_conditions')";
+  echo "insert 2";
+
+  $sql = "insert into character_information(name, gender, theme_color, character_image_url, eyes, skin, hair, clothing, etc) ";
+  $sql .= "values('$name', '$gender', '$theme_color', '$character_image_url', '$eyes', '$skin', '$hair', '$clothing', '$etc')";
+  echo "insert 3";
 
   mysqli_query($con, $sql);
   mysqli_close($con);
-
+  echo "insert 4";
   echo "
     <script>
-      location.href = 'character_page.php?num=1';
+      location.href = 'character_form.php';
     </script>
   ";
 

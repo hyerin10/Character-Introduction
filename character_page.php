@@ -9,6 +9,11 @@
   <title></title>
   <script type="text/javascript">
         
+        function memoDelete(chracter_num, memo_num) {
+          document.memo_delete.submit();
+          alert('삭제되었습니다.');
+        }
+
         function addMemoForm() {
             
             var form = document.createElement("form");
@@ -67,8 +72,8 @@
           window.open("character_form.php", "Character Form", "width=400,height=650");
         }
 
-        function openMemoForm() {
-          window.open("memo_form.php", "Memo Form", "width=500,height=350");
+        function openMemoForm(character_num) {
+          window.open("memo_form.php?character_num="+character_num, "Memo Form", "width=500,height=350");
         }
     </script>
 </head>
@@ -90,6 +95,7 @@
 
     $row = mysqli_fetch_array($result);
 
+    $character_num = $row["num"];
     $name = $row["name"];
     $gender = $row["gender"];
     $theme_color = $row["theme_color"];
@@ -174,35 +180,39 @@
           <a href=""><img src="images/memo_left.png" alt=""></a>
         </div>
 
-        <ul class="memos">
-          <li class="memo">
-            <div class="memo_title">
-              <a href=""><img src="images/memo_close.png" alt="" class="memo_close"></a>
-            </div>
-            <div class="memo_content"></div>
-            
-          </li>
-          <li class="memo">
-            <div class="memo_title">
-              <a href=""><img src="images/memo_close.png" alt="" class="memo_close"></a>
-            </div>
-            <div class="memo_content"></div>
-          </li>
-          <li class="memo">
-            <div class="memo_title">
-              <a href=""><img src="images/memo_close.png" alt="" class="memo_close"></a>
-            </div>
-            <div class="memo_content"></div>
-            <a href=""><img src="" alt=""></a>
-          </li>
-          <li class="memo">
-            <div class="memo_title">
-              <a href=""><img src="images/memo_close.png" alt="" class="memo_close"></a>
-            </div>
-            <div class="memo_content"></div>
-            <a href=""><img src="" alt=""></a>
-          </li>
-        </ul>
+        <form action="memo_delete.php" name="memo_delete" method="post" enctype="multipart/form-data">
+          <ul class="memos">
+            <li class="memo">
+              
+                <div class="memo_title">
+                  <a href=""><img src="images/memo_close.png" onclick="memoDelete(<?=$character_num?>, 1)" alt="" class="memo_close"></a>
+                </div>
+                <a href="" onclick="openMemoForm(<?=$character_num?>)">
+                  <div class="memo_content"></div>
+                </a>
+            </li>
+            <li class="memo">
+              <div class="memo_title">
+                <a href=""><img src="images/memo_close.png" alt="" class="memo_close"></a>
+              </div>
+              <div class="memo_content"></div>
+            </li>
+            <li class="memo">
+              <div class="memo_title">
+                <a href=""><img src="images/memo_close.png" alt="" class="memo_close"></a>
+              </div>
+              <div class="memo_content"></div>
+              <a href=""><img src="" alt=""></a>
+            </li>
+            <li class="memo">
+              <div class="memo_title">
+                <a href=""><img src="images/memo_close.png" alt="" class="memo_close"></a>
+              </div>
+              <div class="memo_content"></div>
+              <a href=""><img src="" alt=""></a>
+            </li>
+          </ul>
+        </form>
 
         <div class="right_btn">
           <a href=""><img src="images/memo_right.png" alt=""></a>

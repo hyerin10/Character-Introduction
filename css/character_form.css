@@ -30,18 +30,6 @@ a {
   
 }
 
-.select_img_div {
-  /* width: 100px;
-  height: 100px;
-  background-color: #8faadc;
-  border: 1px solid #2f528f;
-  margin-top: 36px;
-  /* position: relative; */
-  /* position: absolute;
-  top: 0;
-  left: 100px; */
-}
-
 #select_img {
   width: 100px;
   height: 100px;
@@ -154,4 +142,8 @@ button {
   width: 70px;
   height: 30px;
   margin-right: 16px;
+}
+
+input[type=radio]:checked + img {
+  display: none;
 }

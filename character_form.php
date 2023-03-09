@@ -5,6 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="stylesheet" href="css/character_form.css">
   <link href="https://fonts.googleapis.com/css?family=Noto+Sans:300,400&display=swap" rel="stylesheet">
+
   <script>
     function check_input() {
       
@@ -45,7 +46,7 @@
         return;
       }
       document.character_form.submit();
-      window.close();
+      alert('저장되었습니다.');
     }
 
     function onClickUpload() {
@@ -70,8 +71,23 @@
         <li><a href=""><img src="images/theme_green.png" alt=""></a></li>
         <li><a href=""><img src="images/theme_red.png" alt=""></a></li>
       </ul>
-      
+
+      <!-- <label>
+        <input type="image" name="blue" src="images/theme_blue.png" alt="">
+        <img >
+      </label>
+
+      <label>
+        <input type="radio" name="theme_color" value="green">
+        <img src="images/theme_green.png" alt="Selected Radio Button">
+      </label>
+
+      <label>
+        <input type="radio" name="theme_color" value="red">
+        <img src="images/theme_red.png" alt="Selected Radio Button">
+      </label> -->
     </div>
+
 
     <div class="radio_container">
       <!-- 라디오 버튼으로 바꾸기(모양은 체크)-->

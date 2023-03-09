@@ -21,7 +21,7 @@
 
   echo "
     <script>
-      location.href = 'drawings_list.php';
+      location.href = 'memo_form.php?character_num='+'$character_num';
     </script>
   ";
 

@@ -21,12 +21,21 @@
         return;
       }
       document.memo_form.submit();
+      alert('메모가 저장되었습니다.');
     }
+
+    // URL에서 character_num 데이터를 가져옴
+    const characterNum = new URLSearchParams(window.location.search).get('character_num');
+    
+    console.log(characterNum); // 1
+    
   </script>
 </head>
 <body>
   <form action="memo_insert.php" name="memo_form" class="memo_form" method="post" enctype="multipart/form-data">
+
     <div class="memo_container">
+    <input type="hidden" name="character_num" value="<?php echo $_GET['character_num']; ?>">
       <div class="titles">
         <span>Title: </span>
         <span>Content: </span>
