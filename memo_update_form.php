@@ -49,7 +49,7 @@
       <button type="button" onclick="check_input()">확인</button>
 
       <!-- 창 꺼지게 하기 -->
-      <button type="button">취소</button>
+      <button type="button" onclick="window.close()">취소</button>
     </div>
   </form>
 </body>

@@ -150,6 +150,8 @@
           </li>
         </ul>
 
+
+
         <div class="character_main">
           <span>Character profile</span>
           <div class="character_main_line">
@@ -194,7 +196,7 @@
     ?>
               <li class="memo">
                   <div class="memo_title">
-                    <span class="memo_title_letter"><?=$memo_title?><?=$memo_num?></span>
+                    <span class="memo_title_letter"><?=$memo_title?></span>
                     <a href="memo_delete.php?character_num=<?=isset($_GET['num']) ? $_GET['num'] : null?>&memo_num=<?=$memo_num?>"><img src="images/memo_close.png" onclick="memoDelete(<?=$character_num?>, 1)" alt="" class="memo_close"></a>
                   </div>
                   <!-- 메모수정 -->

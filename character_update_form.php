@@ -7,8 +7,6 @@
   <link href="https://fonts.googleapis.com/css?family=Noto+Sans:300,400&display=swap" rel="stylesheet">
 
   <script>
-    let theme_color = "";
-
     function check_input() {
       
       if(!document.character_form.name.value)
@@ -47,9 +45,6 @@
         document.character_form.etc.focus();
         return;
       }
-
-      console.log(theme_color);
-
       document.character_form.submit();
       alert('저장되었습니다.');
     }
@@ -59,12 +54,10 @@
         myInput.click();
     }
 
-
   </script>
 </head>
 <body>
   <form action="character_insert.php" name="character_form" method="post" enctype="multipart/form-data">
-    <input type="hidden" name="MAX_FILE_SIZE" value="32768">
   <div class="character_content">
 
     <!-- 파일 선택 창 뜨게하기  -->
@@ -74,34 +67,10 @@
     <div class="theme_container">
       <span>Theme Color</span>
       <ul class="theme_colors">
-      <li>
-        <input type="radio" name="theme_color" id="blue" value="blue">
-        <label for="blue"><img src="images/theme_blue.png" alt="Blue Theme"></label>
-      </li>
-      <li>
-        <input type="radio" name="theme_color" id="green" value="green">
-        <label for="green"><img src="images/theme_green.png" alt="Green Theme"></label>
-      </li>
-      <li>
-        <input type="radio" name="theme_color" id="red" value="red">
-        <label for="red"><img src="images/theme_red.png" alt="Red Theme"></label>
-      </li>
+        <li><a href=""><img src="images/theme_blue.png" alt=""></a></li>
+        <li><a href=""><img src="images/theme_green.png" alt=""></a></li>
+        <li><a href=""><img src="images/theme_red.png" alt=""></a></li>
       </ul>
-
-      <!-- <label>
-        <input type="image" name="blue" src="images/theme_blue.png" alt="">
-        <img >
-      </label>
-
-      <label>
-        <input type="radio" name="theme_color" value="green">
-        <img src="images/theme_green.png" alt="Selected Radio Button">
-      </label>
-
-      <label>
-        <input type="radio" name="theme_color" value="red">
-        <img src="images/theme_red.png" alt="Selected Radio Button">
-      </label> -->
     </div>
 
 

@@ -59,12 +59,13 @@ a {
   align-items: center;
 }
 
-.theme_colors {
-  display: flex;
+
+input[type="radio"][name="theme_color"] {
+  display: none;
 }
 
-.theme_colors > li{
-  margin-right: 12px;
+.theme_colors {
+  display: flex;
 }
 
 .theme_colors > li{
@@ -85,7 +86,7 @@ a {
   margin-right: 12px;
 }
 
-input[type="radio"] {
+/* input[type="radio"] {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -101,7 +102,7 @@ input[type="radio"]:checked:before {
   text-align: center;
   font-size: 14px;
   line-height: 20px;
-}
+} */
 
 
 .input_container {
