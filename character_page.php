@@ -38,7 +38,7 @@
             document.body.appendChild(form);
         }
 
-        function addCharacterSheet(event) {
+        function addCharacterSheet(event, character_num) {
           event.preventDefault(); // 기본 동작 방지
 
           // 이미지 경로와 캐릭터 이름을 변수로 지정합니다.
@@ -51,7 +51,7 @@
 
           // a 요소를 생성하고 href 속성과 img 요소를 추가합니다.
           const a = document.createElement("a");
-          a.href = "http://localhost/Character%20Introduction/character_page.php?num=2";
+          a.href = "http://localhost/Character%20Introduction/character_page.php?num="+(character_num+1);
           const img = document.createElement("img");
           img.src = imagePath;
           img.alt = "";
@@ -71,8 +71,13 @@
           // 마지막 li 요소를 마지막에서 두번째로 보냅니다.
           const lastItem = ul.lastChild.previousElementSibling;
           ul.insertBefore(li, lastItem);
+          
+          window.open("character_form.php?character_num="+character_num, "Character Form", "width=400,height=650");
+          
+        }
 
-          window.open("character_form.php", "Character Form", "width=400,height=650");
+        function openCharacterDeleteAndUpdateForm(character_num) {
+          window.open("character_delete_update_form.php?character_num="+character_num, "Character Delete Form", "width=400,height=650");
         }
 
         function openMemoForm(character_num) {
@@ -130,7 +135,7 @@
     mysqli_close($con);
   ?>
           <li class="sheet">
-            <a href="" onclick="addCharacterSheet(event)"><img src="images/sheet_gray1.png" alt=""></a>
+            <a href="" onclick="addCharacterSheet(event, <?=isset($_GET['num']) ? $_GET['num'] : null?>)"><img src="images/sheet_gray1.png" alt=""></a>
             <div class="character_name">ADD+</div>
           </li>
         </ul>
@@ -150,16 +155,33 @@
           </li>
         </ul>
 
+  <?php
+    $num = $_GET["num"];
 
+    // 모든 데이터 가져오기 구현
+
+    // 데이터 가져오기
+    $con = mysqli_connect("localhost", "user1", "12345", "sample");
+    $sql = "select character_image_url from character_information where num=".$num;
+
+    $result = mysqli_query($con, $sql);
+
+    $row = mysqli_fetch_array($result);
+
+    $character_image_url = $row["character_image_url"];
+  ?>
 
         <div class="character_main">
           <span>Character profile</span>
           <div class="character_main_line">
-            <a href=""><img src="images/boy_blue.png" alt=""></a>
+            <a href="#" onclick="openCharacterDeleteAndUpdateForm(<?=isset($_GET['num']) ? $_GET['num'] : null?>)"><img src="<?=$character_image_url?>" alt=""></a>
           </div>
-          
         </div>
+  <?php
 
+
+  mysqli_close($con);
+  ?>
     </div>
   
     <form action="memo_delete.php" name="memo_delete" method="post" enctype="multipart/form-data">
@@ -216,7 +238,6 @@
         
         for($i=0;$i<4-$total_record;$i++) {
     ?>
-    <!-- <h1>hhhh</h1> -->
               <li class="memo_empty">
                   <div class="memo_title_empty">
                     <span class="memo_title_empty_letter">메모추가</span>

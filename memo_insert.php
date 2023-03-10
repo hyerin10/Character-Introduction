@@ -21,7 +21,8 @@
 
   echo "
     <script>
-      location.href = 'memo_form.php?character_num='+'$character_num';
+      window.opener.location.reload(); // 부모창을 새로고침합니다.
+      window.close();
     </script>
   ";
 

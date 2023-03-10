@@ -8,8 +8,13 @@
 </head>
 <body>
   <?php
-    $character_num = $_GET["character_num"];
-
+    $character_num = $_POST["character_num"];
+    var_dump($character_num);
+    echo "
+      <script>
+      console.log('$character_num');
+      </script>
+    ";
     $con = mysqli_connect("localhost", "user1", "12345", "sample");
     $sql = "delete from character_information where num='$character_num'";
     mysqli_query($con, $sql);
@@ -17,7 +22,9 @@
     
     echo "
       <script>
-        location.href = 'character_page.php?num=1';
+        alert('캐릭터가 삭제되었습니다.');
+        window.opener.location.href='character_page.php?num=1';
+        window.close();
       </script>
     ";
   ?>

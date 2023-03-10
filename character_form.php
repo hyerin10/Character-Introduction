@@ -63,6 +63,10 @@
   </script>
 </head>
 <body>
+<?php
+  $character_num = $_GET["character_num"];
+?>
+
   <form action="character_insert.php" name="character_form" method="post" enctype="multipart/form-data">
     <input type="hidden" name="MAX_FILE_SIZE" value="32768">
   <div class="character_content">
@@ -87,21 +91,6 @@
         <label for="red"><img src="images/theme_red.png" alt="Red Theme"></label>
       </li>
       </ul>
-
-      <!-- <label>
-        <input type="image" name="blue" src="images/theme_blue.png" alt="">
-        <img >
-      </label>
-
-      <label>
-        <input type="radio" name="theme_color" value="green">
-        <img src="images/theme_green.png" alt="Selected Radio Button">
-      </label>
-
-      <label>
-        <input type="radio" name="theme_color" value="red">
-        <img src="images/theme_red.png" alt="Selected Radio Button">
-      </label> -->
     </div>
 
 
@@ -136,14 +125,8 @@
       <button type="button" onclick="check_input()">확인</button>
       <!-- 창 꺼지게 하기 -->
       <button type="button" onclick="window.close()">취소</button>
-
     </div>
 
-    <!-- 휴지통 이미지 버튼 만들기(삭제) -->
-    <div class="bin_button">
-      <a href=""><img src="images/bin.png" alt=""></a>
-    </div>
-  </div>
-  </form>
+    </form>
 </body>
 </html>

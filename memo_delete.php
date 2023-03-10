@@ -5,11 +5,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <script>
-    function deleteSuccess() {
-      alert("메모가 삭제되었습니다.");
-    }
-  </script>
 </head>
 <body>
 <?php
@@ -19,7 +14,7 @@
   // $num = $_POST["num"];
 
   $con = mysqli_connect("localhost", "user1", "12345", "sample");
-  $sql = "delete from memo where num='$memo_num'";
+  $sql = "delete from memo where memo_num='$memo_num'";
   mysqli_query($con, $sql);
   mysqli_close($con);
   
@@ -27,8 +22,8 @@
 
   echo "
     <script>
-      deleteSuccess();
-      location.href = 'character_page.php?num=1';
+      alert('메모가 삭제되었습니다.');
+      location.href='character_page.php?num='+$character_num;
     </script>
   ";
 ?>
