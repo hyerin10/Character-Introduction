@@ -1,6 +1,6 @@
 
 <h2>캐릭터 소개 페이지</h2>
-url: http://moostar.dothome.co.kr/character_page.php?num=1
+URL: http://moostar.dothome.co.kr/character_page.php?num=1
 
 <h3>사용한 기술</h3>
 <ul>
