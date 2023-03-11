@@ -1,5 +1,5 @@
 
-<h2>캐릭터 소개 페이지</h2>
+<h1>캐릭터 소개 페이지</h1>
 URL: https://github.com/hyerin10/Character-Introduction
 <br>
 URL: http://moostar.dothome.co.kr/character_page.php?num=1
