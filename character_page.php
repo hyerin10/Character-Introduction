@@ -118,18 +118,18 @@
           });
         });
 
-        // function setLineColor($theme_color) {
-        //   const ulElement = document.querySelector('.sheets');
-        //   if($theme_color == "blue") {
-        //     ulElement.style.borderBottomColor = '#b1b8ed';
-        //   } else if($theme_color == "green") {
-        //     ulElement.style.borderBottomColor = '#beeeb8';
-        //   } else if($theme_color == "red") {
-        //     ulElement.style.borderBottomColor = '#fad5c6';
-        //   } else {
-        //     ulElement.style.borderBottomColor = '#b1b8ed';
-        //   }
-        // }
+        function setLineColor(theme_color) {
+          const ulElement = document.querySelector('.sheets');
+          if(theme_color == "blue") {
+            ulElement.style.borderBottomColor = '#b1b8ed';
+          } else if(theme_color == "green") {
+            ulElement.style.borderBottomColor = '#beeeb8';
+          } else if(theme_color == "red") {
+            ulElement.style.borderBottomColor = '#fad5c6';
+          } else {
+            ulElement.style.borderBottomColor = '#b1b8ed';
+          }
+        }
     </script>
 </head>
 <body>
@@ -176,16 +176,16 @@
 
     if($theme_color == "blue") {
       $sheet_img = 'sheet_blue.png';
-      // echo "<script>setLineColor('$theme_color');</script>";
+      echo "<script>setLineColor('$theme_color');</script>";
     } else if($theme_color == "green") {
       $sheet_img = 'sheet_green.png';
-      // echo "<script>setLineColor('$theme_color');</script>";
+      echo "<script>setLineColor('$theme_color');</script>";
     } else if($theme_color == "red") {
       $sheet_img = 'sheet_red.png';
-      // echo "<script>setLineColor('$theme_color');</script>";
+      echo "<script>setLineColor('$theme_color');</script>";
     } else {
       $sheet_img = 'sheet_blue.png';
-      // echo "<script>setLineColor('$theme_color');</script>";
+      echo "<script>setLineColor('$theme_color');</script>";
     }
 
     // 모든 시트의 데이터 가져오기    
