@@ -2,6 +2,13 @@ body {
   font-family: 'Noto Sans', sans-serif;
   font-weight: 400; /* Regular 400 */
   color: #7F7F7F;
+  position: relative;
+}
+
+body .bin_button {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 ul {
@@ -20,7 +27,6 @@ a {
 }
 
 .character_content > .bin_button {
-  position: absolute;
   top: 16px;
   left: 16px;
 }
