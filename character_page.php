@@ -6,6 +6,7 @@
   <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
   <link rel="stylesheet" href="css/character_page.css">
   <link href="https://fonts.googleapis.com/css?family=Noto+Sans:300,400&display=swap" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <title></title>
   <script type="text/javascript">
         
@@ -87,6 +88,35 @@
         function openMemoFormForUpdate(memo_num, character_num) {
           window.open("memo_update_form.php?memo_num="+memo_num+"&character_num="+character_num, "Memo Update Form", "width=500,height=350");
         }
+
+
+  
+
+        $(document).ready(function() {
+          $('.rain_btn').click(function() {
+            event.preventDefault(); // 기본 동작 제거
+            $('.character_main_line .weather_condition_rain').toggleClass('active');
+            $('.character_main_line .weather_condition_snow.active').removeClass('active');
+          });
+        });
+
+        $(document).ready(function() {
+          $('.snow_btn').click(function() {
+            event.preventDefault(); // 기본 동작 제거
+            $('.character_main_line .weather_condition_snow').toggleClass('active');
+            $('.character_main_line .weather_condition_rain.active').removeClass('active');
+
+          });
+        });
+
+        $(document).ready(function() {
+          $('.snnuy_btn').click(function() {
+            event.preventDefault(); // 기본 동작 제거
+            $('.character_main_line .weather_condition_snow.active').removeClass('active');
+            $('.character_main_line .weather_condition_rain.active').removeClass('active');
+
+          });
+        });
     </script>
 </head>
 <body>
@@ -142,15 +172,15 @@
         
         <ul class="weather_conditions">
           <li class="weather_condition">
-            <a href=""><img src="images/rain.png" alt=""></a>
+            <a href="" class="rain_btn"><img src="images/rain.png" alt=""></a>
             <span>Rainy</span>
           </li>
           <li class="weather_condition">
-            <a href=""><img src="images/sunny.png" alt=""></a>
+            <a href="" class="sunny_btn"><img src="images/sunny.png" alt=""></a>
             <span>Sunny</span>
           </li>
           <li class="weather_condition">
-            <a href=""><img src="images/snow.png" alt=""></a>
+            <a href="" class="snow_btn"><img src="images/snow.png" alt=""></a>
             <span>Snowy</span>
           </li>
         </ul>
@@ -174,7 +204,12 @@
         <div class="character_main">
           <span>Character profile</span>
           <div class="character_main_line">
-            <a href="#" onclick="openCharacterDeleteAndUpdateForm(<?=isset($_GET['num']) ? $_GET['num'] : null?>)"><img src="<?=$character_image_url?>" alt=""></a>
+            <a href="#" onclick="openCharacterDeleteAndUpdateForm(<?=isset($_GET['num']) ? $_GET['num'] : null?>)">
+              <img class="main_image" src="<?=$character_image_url?>" alt="">  
+              <img class="weather_condition_rain" src="images/rain.gif" alt="">
+              <img class="weather_condition_snow" src="images/snow.gif" alt="">
+              
+            </a>
           </div>
         </div>
   <?php

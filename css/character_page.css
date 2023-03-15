@@ -97,6 +97,41 @@ a {
   margin-bottom: 12px;
 }
 
+.weather_condition_rain {
+  position: absolute;
+  top: 200px;
+  left: 350px;
+
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.weather_condition_rain.active {
+
+  opacity: 1;
+}
+
+.weather_condition_snow {
+  position: absolute;
+  top: 200px;
+  left: 350px;
+
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.weather_condition_snow.active {
+
+  opacity: 1;
+}
+
+.main_image {
+
+  position: relative;
+}
+
 .memos {
   display: flex;
 
