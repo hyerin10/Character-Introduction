@@ -130,7 +130,7 @@
         <ul class="sheets">
   <?php
     $num = $_GET["num"];
-
+    $page = isset($_GET['page']) ? $_GET['page'] : 1;
     // 모든 데이터 가져오기 구현
 
     // 데이터 가져오기
@@ -221,36 +221,62 @@
   
     <form action="memo_delete.php" name="memo_delete" method="post" enctype="multipart/form-data">
       <div class="container_bottom">
-          <div class="left_btn">
-            <a href=""><img src="images/memo_left.png" alt=""></a>
-          </div>
 
-            <ul class="memos">
-    <?php
+      <?php
       $num = $_GET["num"];
 
       // 모든 데이터 가져오기 구현
-      $con = mysqli_connect("localhost", "user1", "12345", "sample");
-      $sql = "select * from memo where character_num=$num";
+      // $con = mysqli_connect("localhost", "user1", "12345", "sample");
+      // $sql = "select * from memo where character_num=$num limit $start_index, $page_size";
 
+      // 현재 페이지 구하기
+      $page = isset($_GET['page']) ? $_GET['page'] : 1;
+
+      // 이전 페이지 구하기
+      $prev_page = $page - 1;
+
+      // 다음 페이지 구하기
+      $next_page = $page + 1;
+
+      // 한 페이지에 보여줄 메모 개수
+      $page_size = 4;
+
+      // 시작 인덱스 구하기
+      $start_index = ($page - 1) * $page_size;
+
+      // 이전 페이지 URL
+      $prev_url = isset($_GET['num']) ? "character_page.php?num={$_GET['num']}&page=$prev_page" : "character_page.php?page=$prev_page";
+
+      // 다음 페이지 URL
+      $next_url = isset($_GET['num']) ? "character_page.php?num={$_GET['num']}&page=$next_page" : "character_page.php?page=$next_page";
+      ?>
+          <div class="left_btn">
+            <a href="<?=$prev_url?>"><img src="images/memo_left.png" alt=""></a>
+          </div>
+
+            <ul class="memos">
+    
+      <?php
+
+      $con = mysqli_connect("localhost", "user1", "12345", "sample");
+      $sql = "select * from memo where character_num=$num limit $start_index, $page_size";
+      
       $result = mysqli_query($con, $sql);
+      $row = mysqli_fetch_array($result);
       $total_record = mysqli_num_rows($result);
 
-      // 총 데이터가 1개, 2개, 3개, 4개, 4개 이상인 경우
-
-      // 현재 선택되어 있는 페이지의 num가져오기
-      // $character_num = isset($_GET['num']) ? $_GET['num'] : null;
+      if($total_record!=0) {
       
-      for($i=0; $i<$total_record;$i++) {
-        mysqli_data_seek($result, $i);
-        $row = mysqli_fetch_array($result);
+        for($i=0; $i<($page_size-($page_size-$total_record));$i++) {
+          mysqli_data_seek($result, $i);
+          $row = mysqli_fetch_array($result);
 
-        $memo_num = $row["memo_num"];
-        $memo_title = $row["memo_title"];
-        $memo_content = $row["memo_content"];
+          $memo_num = $row["memo_num"];
+          $memo_title = $row["memo_title"];
+          $memo_content = $row["memo_content"];
 
 
-    ?>
+      ?>
               <li class="memo">
                   <div class="memo_title">
                     <span class="memo_title_letter"><?=$memo_title?></span>
@@ -267,6 +293,7 @@
     <?php
         $character_num++;
       }
+    }
       mysqli_close($con);
 
       if($total_record<=4) {
@@ -295,7 +322,7 @@
           
 
           <div class="right_btn">
-            <a href=""><img src="images/memo_right.png" alt=""></a>
+            <a href="<?=$next_url?>"><img src="images/memo_right.png" alt=""></a>
           </div>
           
       </div>
