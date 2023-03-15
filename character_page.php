@@ -117,6 +117,19 @@
 
           });
         });
+
+        // function setLineColor($theme_color) {
+        //   const ulElement = document.querySelector('.sheets');
+        //   if($theme_color == "blue") {
+        //     ulElement.style.borderBottomColor = '#b1b8ed';
+        //   } else if($theme_color == "green") {
+        //     ulElement.style.borderBottomColor = '#beeeb8';
+        //   } else if($theme_color == "red") {
+        //     ulElement.style.borderBottomColor = '#fad5c6';
+        //   } else {
+        //     ulElement.style.borderBottomColor = '#b1b8ed';
+        //   }
+        // }
     </script>
 </head>
 <body>
@@ -155,8 +168,27 @@
     $page = isset($_GET['page']) ? $_GET['page'] : 1;
     // 모든 데이터 가져오기 구현
 
-    // 데이터 가져오기
     $con = mysqli_connect("localhost", "user1", "12345", "sample");
+    $theme_color_sql = "select theme_color from character_information where num=".$num;
+    $result = mysqli_query($con, $theme_color_sql);
+    $row = mysqli_fetch_array($result);
+    $theme_color = $row["theme_color"];
+
+    if($theme_color == "blue") {
+      $sheet_img = 'sheet_blue.png';
+      // echo "<script>setLineColor('$theme_color');</script>";
+    } else if($theme_color == "green") {
+      $sheet_img = 'sheet_green.png';
+      // echo "<script>setLineColor('$theme_color');</script>";
+    } else if($theme_color == "red") {
+      $sheet_img = 'sheet_red.png';
+      // echo "<script>setLineColor('$theme_color');</script>";
+    } else {
+      $sheet_img = 'sheet_blue.png';
+      // echo "<script>setLineColor('$theme_color');</script>";
+    }
+
+    // 모든 시트의 데이터 가져오기    
     $sql = "select * from character_information";
 
     $result = mysqli_query($con, $sql);
@@ -168,7 +200,6 @@
       $character_num = $row["num"];
       $name = $row["name"];
       $gender = $row["gender"];
-      $theme_color = $row["theme_color"];
       $character_image_url = $row["character_image_url"];
       $eyes = $row["eyes"];
       $skin = $row["skin"];
@@ -178,7 +209,7 @@
     
   ?>
           <li class="sheet">
-            <a href="character_page.php?num=<?=$character_num?>"><img src="images/sheet_blue.png" alt=""></a>
+            <a href="character_page.php?num=<?=$character_num?>"><img src="images/<?=$sheet_img?>" alt=""></a>
             <div class="character_name"><?=$name?></div>
           </li>
   <?php
@@ -281,6 +312,27 @@
       <?php
 
       $con = mysqli_connect("localhost", "user1", "12345", "sample");
+
+      // 테마 컬러 설정
+      $theme_color_sql = "select theme_color from character_information where num=".$num;
+      $result = mysqli_query($con, $theme_color_sql);
+      $row = mysqli_fetch_array($result);
+      $theme_color = $row["theme_color"];
+
+      if($theme_color == "blue") {
+        $memo_title_img = 'memo_blue_top.png';
+        $memo_content_img = 'memo_blue.png';
+      } else if($theme_color == "green") {
+        $memo_title_img = 'memo_green_top.png';
+        $memo_content_img = 'memo_green.png';
+      } else if($theme_color == "red") {
+        $memo_title_img = 'memo_red_top.png';
+        $memo_content_img = 'memo_red.png';
+      } else {
+        $memo_title_img = 'memo_blue_top.png';
+        $memo_content_img = 'memo_blue.png';
+      }
+
       $sql = "select * from memo where character_num=$num limit $start_index, $page_size";
       
       $result = mysqli_query($con, $sql);
@@ -297,18 +349,19 @@
           $memo_title = $row["memo_title"];
           $memo_content = $row["memo_content"];
 
-
       ?>
               <li class="memo">
                   <div class="memo_title">
                     <span class="memo_title_letter"><?=$memo_title?></span>
                     <a href="memo_delete.php?character_num=<?=isset($_GET['num']) ? $_GET['num'] : null?>&memo_num=<?=$memo_num?>"><img src="images/memo_close.png" onclick="memoDelete(<?=$character_num?>, 1)" alt="" class="memo_close"></a>
+                    <img class="memo_title_img" src="images/<?=$memo_title_img?>" alt="">
                   </div>
                   <!-- 메모수정 -->
                   <!-- <h1><?=isset($_GET['num']) ? $_GET['num'] : null?></h1> -->
                   <a href="" onclick="openMemoFormForUpdate(<?=$memo_num?>, <?=isset($_GET['num']) ? $_GET['num'] : null?>);">
                     <div class="memo_content">
                       <span class="memo_content_letter"><?=$memo_content?></span>
+                      <img class="memo_content_img" src="images/<?=$memo_content_img?>" alt="">
                     </div>
                   </a>
               </li>
