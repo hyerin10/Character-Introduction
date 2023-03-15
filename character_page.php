@@ -121,7 +121,29 @@
 </head>
 <body>
   
-  <div class="container">
+  <div class="float_container">
+    <ul>
+      <li>
+        <img id="float_image_right_1" src="images/line_right.png" alt="">
+        <span id="float_span_right_1">Clothing: </span>
+      </li>
+      <li>
+        <img id="float_image_right_2" src="images/line_right.png" alt="">
+        <span id="float_span_right_2">Skin: </span>
+      </li>
+      <li>
+        <img id="float_image_left_1" src="images/line_left.png" alt="">
+        <span id="float_span_left_1">Hair: </span>
+      </li>
+      <li>
+        <img id="float_image_left_2" src="images/line_left.png" alt="">
+        <span id="float_span_left_2">Eyes: </span>
+      </li>
+      <li>
+        <img id="float_image_left_3" src="images/line_left.png" alt="">
+        <span id="float_span_left_3">Etc: </span>
+      </li>
+    </ul>
       
   </div>
   

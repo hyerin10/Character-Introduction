@@ -5,6 +5,86 @@ body {
 
 }
 
+#float_image_right_1 {
+  position: absolute;
+  width: 200px;
+  height: 30px;
+  top: 400px;
+  left: 450px;
+  z-index: 10;
+}
+
+#float_span_right_1 {
+  position: absolute;
+  top: 400px;
+  left: 250px;
+  z-index: 10;
+}
+
+#float_image_right_2 {
+  position: absolute;
+  width: 200px;
+  height: 30px;
+  top: 550px;
+  left: 420px;
+  z-index: 10;
+}
+
+#float_span_right_2 {
+  position: absolute;
+  top: 550px;
+  left: 250px;
+  z-index: 10;
+}
+
+#float_image_left_1 {
+  position: absolute;
+  width: 200px;
+  height: 30px;
+  top: 320px;
+  right: 420px;
+  z-index: 10;
+}
+
+#float_span_left_1 {
+  position: absolute;
+  top: 320px;
+  right: 370px;
+  z-index: 10;
+}
+
+#float_image_left_2 {
+  position: absolute;
+  width: 200px;
+  height: 30px;
+  top: 400px;
+  right: 460px;
+  z-index: 10;
+}
+
+#float_span_left_2 {
+  position: absolute;
+  top: 400px;
+  right: 410px;
+  z-index: 10;
+}
+
+#float_image_left_3 {
+  position: absolute;
+  width: 200px;
+  height: 30px;
+  top: 550px;
+  right: 420px;
+  z-index: 10;
+}
+
+#float_span_left_3 {
+  position: absolute;
+  top: 550px;
+  right: 370px;
+  z-index: 10;
+}
+
 .root {
   display: flex;
   flex-direction: column;
