@@ -274,21 +274,39 @@
     $result = mysqli_query($con, $sql);
 
     $row = mysqli_fetch_array($result);
-
     $character_image_url = $row["character_image_url"];
+
+    if(strlen($character_image_url)<=17)
+    {
+      // 테마 컬러 설정
+      $theme_color_sql = "select theme_color from character_information where num=".$num;
+      $result = mysqli_query($con, $theme_color_sql);
+      $row = mysqli_fetch_array($result);
+      $theme_color = $row["theme_color"];
+
+      if($theme_color == "blue") {
+        $character_image_url = 'character_images/boy_blue.png';
+      } else if($theme_color == "green") {
+        $character_image_url = 'character_images/boy_green.png';
+      } else if($theme_color == "red") {
+        $character_image_url = 'character_images/boy_red.png';
+      } else {
+        $character_image_url = 'character_images/boy_blue.png';
+      }
+    }
   ?>
 
-        <div class="character_main">
-          <span>Character profile</span>
-          <div class="character_main_line">
-            <a href="#" onclick="openCharacterDeleteAndUpdateForm(<?=isset($_GET['num']) ? $_GET['num'] : null?>)">
-              <img class="main_image" src="<?=$character_image_url?>" alt="">  
-              <img class="weather_condition_rain" src="images/rain.gif" alt="">
-              <img class="weather_condition_snow" src="images/snow.gif" alt="">
-              
-            </a>
-          </div>
-        </div>
+  <div class="character_main">
+    <span>Character profile</span>
+    <div class="character_main_line">
+      <a href="#" onclick="openCharacterDeleteAndUpdateForm(<?=isset($_GET['num']) ? $_GET['num'] : null?>)">
+        <img class="main_image" src="<?=$character_image_url?>" alt="">  
+        <img class="weather_condition_rain" src="images/rain.gif" alt="">
+        <img class="weather_condition_snow" src="images/snow.gif" alt="">
+      </a>
+    </div>
+  </div>
+
   <?php
 
 
