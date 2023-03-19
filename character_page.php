@@ -133,27 +133,51 @@
     </script>
 </head>
 <body>
-  
+  <?php
+  $num = $_GET["num"];
+  $con = mysqli_connect("localhost", "user1", "12345", "sample");
+
+  // 테마 컬러 설정
+  $theme_color_sql = "select theme_color from character_information where num=".$num;
+  $result = mysqli_query($con, $theme_color_sql);
+  $row = mysqli_fetch_array($result);
+  $theme_color = $row["theme_color"];
+
+  if($theme_color == "blue") {
+    $float_image_right = 'line_right.png';
+    $float_image_left = 'line_left.png';
+  } else if($theme_color == "green") {
+    $float_image_right = 'line_right_green.png';
+    $float_image_left = 'line_left_green.png';
+  } else if($theme_color == "red") {
+    $float_image_right = 'line_right_red.png';
+    $float_image_left = 'line_left_red.png';
+  } else {
+    $float_image_right = 'line_right.png';
+    $float_image_left = 'line_left.png';
+  }
+  ?>
+
   <div class="float_container">
     <ul>
       <li>
-        <img id="float_image_right_1" src="images/line_right.png" alt="">
+        <img id="float_image_right_1" src="images/<?=$float_image_right?>" alt="">
         <span id="float_span_right_1">Clothing: </span>
       </li>
       <li>
-        <img id="float_image_right_2" src="images/line_right.png" alt="">
+        <img id="float_image_right_2" src="images/<?=$float_image_right?>" alt="">
         <span id="float_span_right_2">Skin: </span>
       </li>
       <li>
-        <img id="float_image_left_1" src="images/line_left.png" alt="">
+        <img id="float_image_left_1" src="images/<?=$float_image_left?>" alt="">
         <span id="float_span_left_1">Hair: </span>
       </li>
       <li>
-        <img id="float_image_left_2" src="images/line_left.png" alt="">
+        <img id="float_image_left_2" src="images/<?=$float_image_left?>" alt="">
         <span id="float_span_left_2">Eyes: </span>
       </li>
       <li>
-        <img id="float_image_left_3" src="images/line_left.png" alt="">
+        <img id="float_image_left_3" src="images/<?=$float_image_left?>" alt="">
         <span id="float_span_left_3">Etc: </span>
       </li>
     </ul>
